@@ -1,0 +1,47 @@
+2021-07-06 14:42:41,185 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 14:43:29,279 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 14:44:23,858 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 14:45:49,827 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 14:45:57,630 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 14:49:41,705 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 14:52:32,410 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 15:14:08,548 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 15:17:43,010 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 15:18:30,125 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 15:25:35,015 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 15:27:01,497 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 15:27:12,707 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 15:29:05,136 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 15:29:15,080 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 15:30:21,876 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 17:45:13,441 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 17:45:35,961 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 17:46:43,914 ERROR: Exception on /edit_profile [POST] [in d:\web projects\tblog\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "d:\web projects\tblog\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\web projects\tblog\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\web projects\tblog\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\web projects\tblog\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "d:\web projects\tblog\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\web projects\Tblog\app\routes.py", line 93, in edit_profile
+    if form.validate_on_submit():
+  File "d:\web projects\tblog\venv\lib\site-packages\flask_wtf\form.py", line 100, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "d:\web projects\tblog\venv\lib\site-packages\wtforms\form.py", line 318, in validate
+    return super(Form, self).validate(extra)
+  File "d:\web projects\tblog\venv\lib\site-packages\wtforms\form.py", line 150, in validate
+    if not field.validate(self, extra):
+  File "d:\web projects\tblog\venv\lib\site-packages\wtforms\fields\core.py", line 226, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "d:\web projects\tblog\venv\lib\site-packages\wtforms\fields\core.py", line 246, in _run_validation_chain
+    validator(form, self)
+  File "D:\web projects\Tblog\app\forms.py", line 48, in validate_username
+    if user is not None:
+UnboundLocalError: local variable 'user' referenced before assignment
+2021-07-06 17:48:46,710 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
+2021-07-06 17:51:14,928 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
