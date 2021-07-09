@@ -6,12 +6,16 @@ from flask_login import LoginManager
 import logging
 from logging.handlers import SMTPHandler,RotatingFileHandler
 import os
+from flask_mail import Mail
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 app.config.from_object(Config)  # config the app instance through Config class
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
+mail = Mail(app)
+bootstrap = Bootstrap(app)
 login.login_view = 'login'
 
 
@@ -27,7 +31,7 @@ if not app.debug:
             secure = ()
         mail_handler = SMTPHandler(
             mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
-            fromaddr='no-reply@' + app.config['MAIL_SERVER'],
+            fromaddr=app.config['DEFAULT_MAIL_ADDR'],
             toaddrs=app.config['ADMINS'], subject='Tblog Failure',
             credentials=auth, secure=secure)
         mail_handler.setLevel(logging.ERROR)
