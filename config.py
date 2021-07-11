@@ -1,10 +1,12 @@
 import os
+from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, '.env'))
 
 class Config(object):
     #app basic config
-    SECRET_KEY = os.environ.get("SECRET_KEY") or "you-will-never-guess" #SECRET_KEY is used to protect web forms against a nasty attack of CSRF
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'super encrypted key' #SECRET_KEY is used to protect web forms against a nasty attack of CSRF
     POSTS_PER_PAGE = 10
 
     #config database
@@ -12,12 +14,14 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     #config mail server
-    MAIL_SERVER = "smtp.qq.com"
-    MAIL_PORT = 25
-    MAIL_USE_TLS = 1
-    MAIL_USERNAME = "1441721977"
-    MAIL_PASSWORD = "xytewtosoqxtjdca"
-    DEFAULT_MAIL_ADDR = 'developer.bowen@qq.com'
+    MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    DEFAULT_MAIL_ADDR = os.environ.get('DEFAULT_MAIL_ADDR')
     ADMINS = ["bowendeng1997@163.com"]
 
-    
+
+
+

@@ -1,53 +1,4 @@
-2021-07-06 14:42:41,185 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 14:43:29,279 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 14:44:23,858 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 14:45:49,827 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 14:45:57,630 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 14:49:41,705 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 14:52:32,410 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 15:14:08,548 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 15:17:43,010 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 15:18:30,125 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 15:25:35,015 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 15:27:01,497 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 15:27:12,707 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 15:29:05,136 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 15:29:15,080 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 15:30:21,876 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 17:45:13,441 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 17:45:35,961 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 17:46:43,914 ERROR: Exception on /edit_profile [POST] [in d:\web projects\tblog\venv\lib\site-packages\flask\app.py:1454]
-Traceback (most recent call last):
-  File "d:\web projects\tblog\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "d:\web projects\tblog\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "d:\web projects\tblog\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "d:\web projects\tblog\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "d:\web projects\tblog\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "D:\web projects\Tblog\app\routes.py", line 93, in edit_profile
-    if form.validate_on_submit():
-  File "d:\web projects\tblog\venv\lib\site-packages\flask_wtf\form.py", line 100, in validate_on_submit
-    return self.is_submitted() and self.validate()
-  File "d:\web projects\tblog\venv\lib\site-packages\wtforms\form.py", line 318, in validate
-    return super(Form, self).validate(extra)
-  File "d:\web projects\tblog\venv\lib\site-packages\wtforms\form.py", line 150, in validate
-    if not field.validate(self, extra):
-  File "d:\web projects\tblog\venv\lib\site-packages\wtforms\fields\core.py", line 226, in validate
-    stop_validation = self._run_validation_chain(form, chain)
-  File "d:\web projects\tblog\venv\lib\site-packages\wtforms\fields\core.py", line 246, in _run_validation_chain
-    validator(form, self)
-  File "D:\web projects\Tblog\app\forms.py", line 48, in validate_username
-    if user is not None:
-UnboundLocalError: local variable 'user' referenced before assignment
-2021-07-06 17:48:46,710 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-06 17:51:14,928 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:43]
-2021-07-08 22:09:39,911 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:45]
-2021-07-08 22:22:03,945 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:45]
-2021-07-08 22:22:27,745 ERROR: Exception on /edit_profile [POST] [in d:\web projects\tblog\venv\lib\site-packages\flask\app.py:1454]
+2021-07-08 22:29:09,812 ERROR: Exception on /edit_profile [POST] [in d:\web projects\tblog\venv\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1770, in _execute_context
     self.dialect.do_execute(
@@ -115,4 +66,73 @@ sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed
 [SQL: UPDATE user SET username=? WHERE user.id = ?]
 [parameters: ('susan', 2)]
 (Background on this error at: http://sqlalche.me/e/14/gkpj)
-2021-07-08 22:28:48,111 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:45]
+2021-07-08 22:30:11,173 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:45]
+2021-07-08 22:30:25,382 ERROR: Exception on /edit_profile [POST] [in d:\web projects\tblog\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1770, in _execute_context
+    self.dialect.do_execute(
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "d:\web projects\tblog\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\web projects\tblog\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\web projects\tblog\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\web projects\tblog\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "d:\web projects\tblog\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\web projects\Tblog\app\routes.py", line 110, in edit_profile
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 829, in commit
+    self._prepare_impl()
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3298, in flush
+    self._flush(objects)
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3438, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3398, in _flush
+    flush_context.execute()
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 234, in save_obj
+    _emit_update_statements(
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 998, in _emit_update_statements
+    c = connection._execute_20(
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1582, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1451, in _execute_clauseelement
+    ret = self._execute_context(
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1813, in _execute_context
+    self._handle_dbapi_exception(
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1994, in _handle_dbapi_exception
+    util.raise_(
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1770, in _execute_context
+    self.dialect.do_execute(
+  File "d:\web projects\tblog\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: UPDATE user SET username=? WHERE user.id = ?]
+[parameters: ('susan', 2)]
+(Background on this error at: http://sqlalche.me/e/14/gkpj)
+2021-07-08 22:32:35,622 INFO: Tblog startup [in D:\web projects\Tblog\app\__init__.py:45]
