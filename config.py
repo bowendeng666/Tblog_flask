@@ -8,7 +8,7 @@ class Config(object):
     #app basic config
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'super encrypted key' #SECRET_KEY is used to protect web forms against a nasty attack of CSRF
     POSTS_PER_PAGE = 10
-
+    LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
     #config database
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or  'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
