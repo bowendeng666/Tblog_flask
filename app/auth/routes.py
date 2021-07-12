@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from app.auth.forms import LoginForm, RegistrationForm, \
     ResetPasswordRequestForm, ResetPasswordForm
 from flask import render_template, flash, redirect, url_for, request
@@ -6,8 +6,10 @@ from flask_login import current_user, login_user, logout_user
 from werkzeug.urls import url_parse
 from app.models import User
 from app.auth.email import send_password_reset_email
-from app import app, db
+from app import  db
 from app.auth import bp
+from datetime import timedelta
+from flask import session, current_app
 
 @bp.route("/login", methods=['GET', 'POST'])
 def login():
@@ -26,6 +28,9 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('main.index')
         return redirect(next_page)
+    #set up session timeout
+    session.permanent = True
+    current_app.permanent_session_lifetime = timedelta(minutes=30)
     return render_template("auth/login.html", title="Sign In", form=form)
 
 
