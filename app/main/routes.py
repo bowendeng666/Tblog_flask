@@ -108,9 +108,12 @@ def unfollow(username):
     flash('You are not following {}.'.format(username))
     return redirect(url_for('main.user', username=username))
 
-# handel reset password request sent from client side
-
-
+#user info popup
+@bp.route('/user/<username>/popup')
+@login_required
+def user_popup(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    return render_template('main/user_popup.html', user=user)
 
 
 # update last_seen in User model to record last active time of each user
