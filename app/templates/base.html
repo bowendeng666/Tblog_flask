@@ -6,42 +6,47 @@
     .navbar-brand img {
         height: 50px;
     }
+
     .navbar-brand {
         padding: 0;
     }
+
 </style>
 {% endblock %}
 
 {% block scripts %}
 {{ super() }}
 {{ moment.include_moment() }}
+
+
 <script>
+    // javaScripts for pop_up function
     $(function () {
         var timer = null;
         var xhr = null;
         $('.user_popup').hover(
-            function(event) {
+            function (event) {
                 // mouse in event handler
                 var elem = $(event.currentTarget);
-                timer = setTimeout(function() {
+                timer = setTimeout(function () {
                     timer = null;
                     xhr = $.ajax(
                         '/user/' + elem.first().text().trim() + '/popup').done(
-                            function(data) {
+                            function (data) {
                                 xhr = null;
-                                    elem.popover({
-                                        trigger: 'manual',
-                                        html: true,
-                                        animation: false,
-                                        container: elem,
-                                        content: data
-                                    }).popover('show');
-                                    flask_moment_render_all();
+                                elem.popover({
+                                    trigger: 'manual',
+                                    html: true,
+                                    animation: false,
+                                    container: elem,
+                                    content: data
+                                }).popover('show');
+                                flask_moment_render_all();
                             }
                         );
                 }, 1000);
             },
-            function(event) {
+            function (event) {
                 // mouse out event handler
                 var elem = $(event.currentTarget);
                 if (timer) {
@@ -58,7 +63,33 @@
             }
         )
     });
+
+
+    //javascript for message badge function
+    function set_message_count(n) {
+        $('#message_count').text(n);
+        $('#message_count').css('visibility', n ? 'visible' : 'hidden');
+    }
+    //javascript for asynchronously send request to server asking for notification
+    //set up timer to send asychronous request
+    {% if current_user.is_authenticated %}
+        $(function() {
+            var since = 0;
+            setInterval(function() {
+                $.ajax('{{ url_for('main.notifications') }}?since=' + since).done(
+                    function(notifications) {
+                        for (var i = 0; i < notifications.length; i++) {
+                            if (notifications[i].name == 'unread_message_count')
+                                set_message_count(notifications[i].data);
+                            since = notifications[i].timestamp;
+                        }
+                    }
+                );
+            }, 10000);
+        });
+        {% endif %}
 </script>
+
 {% endblock %}
 
 {% block title %}
@@ -76,8 +107,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a  class="navbar-brand" href="{{ url_for('main.index') }}">
-                <img  src="/static/logo.png" alt="Brand">
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">
+                <img src="/static/logo.png" alt="Brand">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -89,6 +120,15 @@
                 {% if current_user.is_anonymous %}
                 <li><a href="{{ url_for('auth.login') }}">Login</a></li>
                 {% else %}
+                <li>
+                    <a href="{{ url_for('main.messages') }}">
+                        Messages
+                        {% set new_messages = current_user.new_messages() %}
+                        {% if new_messages %}
+                        <span id="message_count" class="badge">{{ new_messages }}</span>
+                        {% endif %}
+                    </a>
+                </li>
                 <li><a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a></li>
                 <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                 {% endif %}

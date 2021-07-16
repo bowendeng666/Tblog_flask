@@ -22,6 +22,9 @@ class EditProfileForm(FlaskForm):
                 if user is not None:
                     raise ValidationError('Username been used, please use a different username.')
 
-
 class EmptyForm(FlaskForm):
+    submit = SubmitField('Submit')
+
+class MessageForm(FlaskForm):
+    message = TextAreaField('Message', validators=[DataRequired(), Length(min=0, max=140)])
     submit = SubmitField('Submit')
