@@ -22,6 +22,8 @@ class Config(object):
     DEFAULT_MAIL_ADDR = os.environ.get('DEFAULT_MAIL_ADDR')
     ADMINS = ["bowendeng1997@163.com"]
 
+    #config redis server
+    REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
 
 
 

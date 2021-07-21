@@ -20,7 +20,7 @@
 
 
 <script>
-    // javaScripts for pop_up function
+    //pop_up function
     $(function () {
         var timer = null;
         var xhr = null;
@@ -65,12 +65,13 @@
     });
 
 
-    //javascript for message badge function
+    //message badge function
     function set_message_count(n) {
         $('#message_count').text(n);
         $('#message_count').css('visibility', n ? 'visible' : 'hidden');
     }
-    //javascript for asynchronously send request to server asking for notification
+
+    //asynchronously send request to server asking for notification
     //set up timer to send asychronous request
     {% if current_user.is_authenticated %}
         $(function() {
@@ -79,8 +80,15 @@
                 $.ajax('{{ url_for('main.notifications') }}?since=' + since).done(
                     function(notifications) {
                         for (var i = 0; i < notifications.length; i++) {
-                            if (notifications[i].name == 'unread_message_count')
-                                set_message_count(notifications[i].data);
+                            switch (notifications[i].name) {
+                                case 'unread_message_count':
+                                    set_message_count(notifications[i].data);
+                                    break;
+                                case 'task_progress':
+                                    set_task_progress(notifications[i].data.task_id,
+                                        notifications[i].data.progress);
+                                    break;
+                            }
                             since = notifications[i].timestamp;
                         }
                     }
@@ -88,6 +96,10 @@
             }, 10000);
         });
         {% endif %}
+    //update export percentage
+    function set_task_progress(task_id, progress) {
+        $('#' + task_id + '-progress').text(progress);
+    }
 </script>
 
 {% endblock %}
@@ -140,6 +152,21 @@
 
 {% block content %}
 <div class="container">
+    <!-- export progress -->
+    {% if current_user.is_authenticated %}
+    {% with tasks = current_user.get_tasks_in_progress() %}
+    {% if tasks %}
+        {% for task in tasks %}
+        <div class="alert alert-success" role="alert">
+            {{ task.description }}
+            <span id="{{ task.id }}-progress">{{ task.get_progress() }}</span>%
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% endif %}
+
+    <!-- flash message -->
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
