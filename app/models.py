@@ -112,7 +112,7 @@ class User(db.Model, UserMixin):
         return Task.query.filter_by(user=self, complete=False).all()
 
     def get_task_in_progress(self, name):
-        return Task.query.filter_by(name=name, user_id=self.id,complete=False).first()
+        return Task.query.filter_by(name=name, user=self,complete=False).first()
 
 
 # define post model
