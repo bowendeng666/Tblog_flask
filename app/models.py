@@ -38,7 +38,7 @@ class User(db.Model, UserMixin):
         'Message', foreign_keys='Message.recipient_id', backref='recipient', lazy='dynamic')
     last_message_read_time = db.Column(db.DateTime)
     notifications = db.relationship('Notification', backref='user',lazy='dynamic')
-
+    tasks = db.relationship('Task', backref='user', lazy='dynamic')
 
     def __repr__(self):
         return "<User {}>".format(self.username)
@@ -112,9 +112,9 @@ class User(db.Model, UserMixin):
         return Task.query.filter_by(user=self, complete=False).all()
 
     def get_task_in_progress(self, name):
-        return Task.query.filter_by(name=name, user=self,complete=False).first()
+        return Task.query.filter_by(name=name, user_id=self.id,complete=False).first()
 
-        
+
 # define post model
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
