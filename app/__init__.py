@@ -53,7 +53,7 @@ def create_app(config_class=Config):
 
     #########initialize Redis and RQ##############
     app.redis = Redis.from_url(app.config['REDIS_URL'])
-    app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
+    app.task_queue = rq.Queue('tblog-tasks', connection=app.redis)
 
     ############## log setting#############
     #sent log info by email
